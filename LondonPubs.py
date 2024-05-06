@@ -22,7 +22,13 @@ def readData():  # reads in data from csv
     '''
     data = "open_pubs_10000_sample.csv"
     # data = "test.csv"
-    df = pd.read_csv(data)
+    df = pd.read_csv(data, index_col = False, header = 0,
+
+                      names = ["fsaID", "name", "address", "postcode",\
+
+                               "easting", "northing","latitude","longitude",\
+
+                               "localAuthority"])
     
     # clean data
     df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
