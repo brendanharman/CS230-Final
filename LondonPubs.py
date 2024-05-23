@@ -60,7 +60,7 @@ def singleAuth(df):  # streamlit select a single authority
     # df = readData()
     df = sorted(df["localAuthority"].unique())
    
-    return st.selectbox("Choose a city:", df, index = "City of London")
+    return st.selectbox("Choose a city:", df, index = df.index("City of London"))
 
 
 def authFilter(selAuthority, df):  # filter data based on selected authority
