@@ -60,7 +60,7 @@ def singleAuth(df):  # streamlit select a single authority
     # df = readData()
     df = sorted(df["localAuthority"].unique())
    
-    return st.selectbox("Choose a city:", df)
+    return st.selectbox("Choose a city:", df, index = "City of London")
 
 
 def authFilter(selAuthority, df):  # filter data based on selected authority
@@ -87,7 +87,7 @@ def authSelect(selAuthority, df):  # pick out the data from singleAuth
     return df
 
 
-def mappingAuth(df, selAuthority = "City of London"):  # map pubs based on authority selection
+def mappingAuth(df, selAuthority):  # map pubs based on authority selection
     '''
     @params passes dataframe with pub data and single selectbox
     @return generates a map of pub locations
@@ -309,8 +309,7 @@ def main():
     elif display == "Map":
         st.header("Location of pubs based on city:")
         selAuthority = singleAuth(df)
-        if selAuthority == "":
-            selAuthority = "City of London"
+       
         mappingAuth(df, selAuthority)
         st.write("This map shows the locations of all pubs in " + str(selAuthority) + ". The pubs name and addresses are provided with a hover click.")
     
