@@ -309,6 +309,8 @@ def main():
     elif display == "Map":
         st.header("Location of pubs based on city:")
         selAuthority = singleAuth(df)
+        if selAuthority == "":
+            selAuthority = "City of London"
         mappingAuth(df, selAuthority)
         st.write("This map shows the locations of all pubs in " + str(selAuthority) + ". The pubs name and addresses are provided with a hover click.")
     
