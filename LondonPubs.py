@@ -182,7 +182,7 @@ def numPubsArea(order, df):  # count number of pubs in each area code
     #for code in areaCodes:
 
         #codedict[code] = df["postcode"].value_counts()[code]
-    codedict = df["postcode"].value_conts().to_dict()
+    codedict = df["postcode"].to_dict()
     topDict = dict(sorted(codedict.items(), key=lambda x: x[1], reverse=True) [:topUser]) 
     bottomDict = dict(sorted(codedict.items(), key=lambda x: x[1], reverse=False) [:topUser]) 
     
