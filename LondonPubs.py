@@ -179,13 +179,14 @@ def numPubsArea(order, df):  # count number of pubs in each area code
     codedict = {}
 
     topUser = st.slider("How many postcodes do you wish to see?", 3, 10)
-    for code in areaCodes:
+    #for code in areaCodes:
 
-        codedict[code] = df["postcode"].value_counts()[code]
+        #codedict[code] = df["postcode"].value_counts()[code]
+    codedict = df["postcode"].value_conts().to_dict()
     topDict = dict(sorted(codedict.items(), key=lambda x: x[1], reverse=True) [:topUser]) 
     bottomDict = dict(sorted(codedict.items(), key=lambda x: x[1], reverse=False) [:topUser]) 
     
-    if order == "bottom":
+    if order == "least":
         returnDict = bottomDict
     else:
         returnDict = topDict
@@ -331,12 +332,12 @@ def main():
         elif chart == "Postcode":
             order = st.toggle("Toggle on for postcodes with the least pubs, off for postcodes with the most.",)
             if order:
-                order = "bottom"
+                order = "least"
             else: 
-                order = "top"
+                order = "most"
             postcodeDict = numPubsArea(order, df)
             st.pyplot(genBarChart_AreaCode(postcodeDict))
-            st.write("This chart shows postcodes with the most or least pubs inside them.")
+            st.write("This chart shows postcodes with the", order, "pubs inside them.")
     
     else:
         st.header("List and count of pubs in a certain radius of London Bridge: ")
