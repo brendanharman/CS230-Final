@@ -87,7 +87,7 @@ def authSelect(selAuthority, df):  # pick out the data from singleAuth
     return df
 
 
-def mappingAuth(selAuthority, df):  # map pubs based on authority selection
+def mappingAuth(selAuthority = "City of London", df):  # map pubs based on authority selection
     '''
     @params passes dataframe with pub data and single selectbox
     @return generates a map of pub locations
