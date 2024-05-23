@@ -173,7 +173,8 @@ def numPubsArea(order, df):  # count number of pubs in each area code
     # df = readData()
     df["postcode"] = df["postcode"].str[:3]
     # print(df)
-    areaCodes = [row["postcode"] for index, row in df.iterrows()]
+    # areaCodes = [row["postcode"] for index, row in df.iterrows()]
+    areaCodes = df["postcode"].unique().tolist()
 
     codedict = {}
 
